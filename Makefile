@@ -8,7 +8,10 @@ OBJECT_FILES = *.o
 all: annoncement $(NAME) 
 
 SRC1 = ft_printf.c \
-		help_file.c
+		ft_d_i_u.c \
+		ft_c_s.c \
+		ft_x_X.c
+
 		
 
 $(NAME):

@@ -6,57 +6,48 @@
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:34:47 by acoquele          #+#    #+#             */
-/*   Updated: 2021/10/27 17:20:04 by acoquele         ###   ########.fr       */
+/*   Updated: 2021/11/04 16:36:01 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void parsin_anal(char *str, int nb)
+int parsin_checker(const char *str, va_list args, int sum, int i)
 {
-	while(str[i])
-	{
+	int	nb;
 
-	}
+	nb = i;
+	if (str[nb + 1] == 'c')
+		sum += ft_c(va_arg(args, int ));
+	else if (str[nb + 1] == 's')
+		sum += ft_s(va_arg(args, char *));
+	else if (str[nb + 1] == 'd')
+		sum += ft_putnbr(va_arg(args, int));
+	else if (str[nb + 1] == 'i')
+		sum += ft_putnbr(va_arg(args, int));
+	else if (str[nb + 1] == 'u')
+		ft_putnbr_unsi(va_arg(args, unsigned int));
+	else if (str[nb] == '%' && str[nb + 1] == 'x')
+		ft_putnbr_base(va_arg(args, long));
+	else if (str[nb] == '%' && str[nb + 1] == 'X')
+		ft_putnbr_base_maj(va_arg(args, long));
+	else if (str[nb] == '%' && str[nb + 1] == '%')
+		write(1, "%", 1);
+	return (sum);
 }
 
-
-void	ft_putnbr(int nb)
-{
-	unsigned int	a;
-
-	a = 0;
-	if (nb == -2147483648)
-		write(1, "-2147483648", 11);
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		a = -nb;
-	}
-	else
-		a = nb;
-	if (a > 9 && nb != -2147483648)
-	{
-		ft_putnbr(a / 10);
-		a %= 10;
-	}
-	if (nb != -2147483648)
-		ft_putchar(a + '0');
-}
-
-void	ft_putnbr_unsi(int nb)
-{
-	unsigned int	a;
-
-	a = (unsigned int)nb;
-	if (a > 9)
-	{
-		ft_putnbr(a / 10);
-		a %= 10;
-	}
-	ft_putchar(a + '0');
-}
-
+/*
+%c print a single caracter, (use write with a lenght of 1)(return error if more than one is writen) V
+%s print a string, (i can use ft_putstr_fd but the fd is useless) V
+%p The void * pointer argument is printed in hexadecimal.
+%d print a decimal (base 10) number. (probably use a converter to a int base 10) V
+%i print an integer in base 10. V
+%u print an unsigned decimal (base 10) number. V
+%x print a number in hexadecimal (base 16), with lowercase.
+%X print a number in hexadecimal (base 16), with uppercase.
+%% print a percent sign.
+*/
+/*
 void Printf_main(void)
 {
 
@@ -75,30 +66,42 @@ void Printf_main(void)
 	printf("this should print an unsigned interger : %u\n", -1);
 	ft_putnbr_unsi(-1);
 }
+*/
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
-	va_list	arg;
+	va_list args;
 	int		i;
+	int		sum;
 
-	va_start(arg, param);
+	va_start(args, str);
 	i = 0;
+	sum = 0;
 	while (str[i])
 	{
-		
+		if (str[i] != '%')
+		{
+			ft_putchar_2(str[i]);
+			sum++;
+			i++;
+		}
+		else if (str[i] == '%')
+		{
+			sum += parsin_checker(str, args, sum, i);
+			i += 2;
+		}
 	}
-	va_end;
+	va_end(args);
+	return (sum);
+}
+
+int main(void)
+{
+	ft_printf("hello %s world\n", "-");
+	//printf("hello %s world\n", "-");
+	return 0;
 }
 
 /*
-%c print a single caracter, (use write with a lenght of 1)(return error if more than one is writen) V
-%s print a string, (i can use ft_putstr_fd but the fd is useless) V
-%p The void * pointer argument is printed in hexadecimal.
-%d print a decimal (base 10) number. (probably use a converter to a int base 10) V
-%i print an integer in base 10. V
-%u print an unsigned decimal (base 10) number. V
-%x print a number in hexadecimal (base 16), with lowercase.
-%X print a number in hexadecimal (base 16), with uppercase.
-%% print a percent sign.
-*/
 printf("%d %s %c %d", 54, "voiture", '#', -254);
+*/
