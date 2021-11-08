@@ -39,6 +39,6 @@ deleting_lib :
 	@echo "deleting library...."
 
 save: fclean 
-	@git add *.c libft.h Makefile
+	@git add *.c *.h Makefile
 	@git commit -m autosave
 	@git push

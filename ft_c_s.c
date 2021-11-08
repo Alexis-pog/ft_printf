@@ -6,7 +6,7 @@
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 14:23:37 by acoquele          #+#    #+#             */
-/*   Updated: 2021/11/08 14:44:26 by acoquele         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:15:27 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,8 @@ void	ft_putchar(char c)
 
 int	ft_c(char c)
 {
-	if (ft_isascii(c) == 1)
-	{
-		write (1, &c, 1);
-		return (1);
-	}
-	return (0);
+	write (1, &c, 1);
+	return (1);
 }
 
 size_t	ft_s(char *c)

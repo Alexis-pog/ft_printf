@@ -6,7 +6,7 @@
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:34:47 by acoquele          #+#    #+#             */
-/*   Updated: 2021/11/08 15:29:27 by acoquele         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:16:38 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ int	ft_printf(const char *str, ...)
 int main(void)
 {
 	//ft_printf("f%i\n", 100);
-	printf("%d\n", ft_printf(" %p %p ", 0, 0));
+	printf("%d\n", ft_printf("%c ", -1));
 	//printf("%i\n", 100);
-	printf("%d\n", printf(" %p %p ", 0, 0));
+	printf("%d\n", printf("%c ", -1));
 	return 0;
 }
 */
