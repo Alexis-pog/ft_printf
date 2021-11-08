@@ -5,50 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 16:05:02 by acoquele          #+#    #+#             */
-/*   Updated: 2021/10/26 14:47:57 by acoquele         ###   ########.fr       */
+/*   Created: 2021/10/31 15:28:01 by acoquele          #+#    #+#             */
+/*   Updated: 2021/11/08 15:17:08 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_intlen(int counter)
 {
-	write (1, &c, 1);
+	int	count;
+
+	count = 0;
+	if (counter < 0)
+	{	
+		counter *= -1;
+		count++;
+	}
+	while (counter > 0)
+	{
+		count++;
+		counter /= 10;
+	}
+	if (count == 0)
+		count++;
+	return (count);
 }
 
-void	ft_putnbr_unsi(int nb)
+int	ft_uintlen(unsigned int counter)
 {
-	unsigned int	a;
+	unsigned int	count;
 
-	a = (unsigned int)nb;
-	if (a > 9)
+	count = 0;
+	while (counter > 0)
 	{
-		ft_putnbr(a / 10);
-		a %= 10;
+		counter /= 10;
+		count++;
 	}
-	ft_putchar(a + '0');
+	if (count == 0)
+		count++;
+	return (count);
 }
 
-void	ft_putnbr(int nb)
+int	ft_isascii(int c)
 {
-	unsigned int	a;
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
+}
 
-	a = 0;
-	if (nb == -2147483648)
-		write(1, "-2147483648", 11);
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		a = -nb;
-	}
-	else
-		a = nb;
-	if (a > 9 && nb != -2147483648)
-	{
-		ft_putnbr(a / 10);
-		a %= 10;
-	}
-	if (nb != -2147483648)
-		ft_putchar(a + '0');
+int	putchar_mod(void)
+{
+	write (1, "0", 1);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 15:11:50 by acoquele          #+#    #+#             */
-/*   Updated: 2021/11/04 12:23:34 by acoquele         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:32:53 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_putnbr(int nb)
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		a[1] = 11;
+		return (a[1] + 11);
 	}
 	else if (nb < 0)
 	{
@@ -37,15 +37,19 @@ int	ft_putnbr(int nb)
 	}
 	if (nb != -2147483648)
 		ft_putchar(a[0] + '0');
-	return (a[1]);
+	return (ft_intlen(nb));
 }
 
-void	ft_putnbr_unsi(unsigned int nb)
+int	ft_putnbr_unsi(unsigned int nb)
 {
-	if (nb > 9)
+	unsigned int	count;
+
+	count = nb;
+	if (count > 9)
 	{
-		ft_putnbr_unsi(nb / 10);
-		nb %= 10;
+		ft_putnbr_unsi(count / 10);
+		count %= 10;
 	}
-	ft_putchar(nb + '0');
+	ft_putchar(count + '0');
+	return (ft_uintlen(nb));
 }

@@ -10,7 +10,8 @@ all: annoncement $(NAME)
 SRC1 = ft_printf.c \
 		ft_d_i_u.c \
 		ft_c_s.c \
-		ft_x_X.c
+		ft_x_X.c \
+		help_file.c
 
 		
 
@@ -23,16 +24,19 @@ clean: deleting
 	@rm -rf $(OBJECT_FILES)
 	@echo "done !!"
 
-fclean:	deleting clean 
+fclean:	deleting_lib deleting clean 
 	@rm -rf $(NAME)
 
-re: fclean deleting all
+re: fclean  all
 	
 annoncement :
 		@echo "creating library..."
 
 deleting :
-	@echo "deleting files..."
+	@echo "deleting OBJECT_FILES files..."
+
+deleting_lib :
+	@echo "deleting library...."
 
 save: fclean 
 	@git add *.c libft.h Makefile

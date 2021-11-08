@@ -6,7 +6,7 @@
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:35:18 by acoquele          #+#    #+#             */
-/*   Updated: 2021/11/04 15:52:01 by acoquele         ###   ########.fr       */
+/*   Updated: 2021/11/08 15:16:22 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,20 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <limits.h>
 
 void	ft_putchar(char c);
 int		ft_putnbr(int nb);
-void	ft_putnbr_unsi(unsigned int nb);
+int		putchar_mod(void);
+int		ft_putnbr_unsi(unsigned int nb);
 size_t	ft_s(char *c);
 int		ft_strlen(char *str);
 int		ft_intlen(int counter);
-void	ft_putnbr_base(long nbr);
-void	ft_putnbr_base_maj(long nbr);
+int		ft_putnbr_base(unsigned int nbr);
+int		ft_putnbr_base_maj(unsigned int nbr);
+int		ft_putnbr_base_long(unsigned long nbr);
 int		ft_printf(const char *str, ...);
-void	ft_putchar_2(char c);
 int		ft_c(char c);
+int		ft_isascii(int c);
+int		ft_uintlen(unsigned int counter);
 #endif
