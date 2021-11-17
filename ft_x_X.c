@@ -6,7 +6,7 @@
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 11:18:57 by acoquele          #+#    #+#             */
-/*   Updated: 2021/11/08 15:28:49 by acoquele         ###   ########.fr       */
+/*   Updated: 2021/11/08 19:09:33 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	ft_putnbr_base_long(unsigned long nbr)
 	}
 	index[1] = index[0];
 	write (1, "0x", 2);
-	while (index[0]-- > 0)	
+	while (index[0]-- > 0)
 		ft_putchar(array[index[0]]);
 	return (index[1] + 2);
 }

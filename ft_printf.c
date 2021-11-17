@@ -6,13 +6,13 @@
 /*   By: acoquele <acoquele@student@.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 14:34:47 by acoquele          #+#    #+#             */
-/*   Updated: 2021/11/08 17:16:38 by acoquele         ###   ########.fr       */
+/*   Updated: 2021/11/17 10:19:15 by acoquele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int parsin_checker(const char *str, va_list args, int sum, int i)
+int	parsin_checker(const char *str, va_list args, int sum, int i)
 {
 	if (str[i + 1] == 'c')
 		sum += ft_c(va_arg(args, int));
@@ -38,41 +38,9 @@ int parsin_checker(const char *str, va_list args, int sum, int i)
 	return (sum);
 }
 
-/*
-%c print a single caracter, (use write with a lenght of 1)(return error if more than one is writen) V
-%s print a string, (i can use ft_putstr_fd but the fd is useless) V
-%p The void * pointer argument is printed in hexadecimal.
-%d print a decimal (base 10) number. (probably use a converter to a int base 10) V
-%i print an integer in base 10. V
-%u print an unsigned decimal (base 10) number. V
-%x print a number in hexadecimal (base 16), with lowercase.
-%X print a number in hexadecimal (base 16), with uppercase.
-%% print a percent sign.
-*/
-/*
-void Printf_main(void)
-{
-
-	printf("this should print a caracter : %c\n",'d');
-	ft_putchar('d');
-	write(1,"\n",1);
-	printf("this sould print a string : %s\n","bonjour");
-	write (1,"bonjour",8);
-	write(1,"\n",1);
-	printf("this should print a number : %d\n",-50);
-	ft_putnbr(45);
-	write(1,"\n",1);
-	printf("this should print a number too : %i\n", -42);
-	ft_putnbr(-42);
-	write(1,"\n",1);
-	printf("this should print an unsigned interger : %u\n", -1);
-	ft_putnbr_unsi(-1);
-}
-*/
-
 int	ft_printf(const char *str, ...)
 {
-	va_list args;
+	va_list	args;
 	int		i;
 	int		sum;
 
@@ -101,9 +69,9 @@ int	ft_printf(const char *str, ...)
 int main(void)
 {
 	//ft_printf("f%i\n", 100);
-	printf("%d\n", ft_printf("%c ", -1));
+	printf("%d\n", ft_printf(" %d ", -1));
 	//printf("%i\n", 100);
-	printf("%d\n", printf("%c ", -1));
+	printf("%d\n", printf(" %d ", -1));
 	return 0;
 }
 */
